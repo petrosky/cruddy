@@ -9,7 +9,7 @@ class Users(models.Model):
     user_level = models.IntegerField()
 
     def __str__(self):
-        return self.first_name + ' ' + self.last_name
+        return self.first_name
 
 
 class Task(models.Model):
@@ -27,3 +27,4 @@ class TaskList(models.Model):
 
     def __str__(self):
         return self.task_list
+
