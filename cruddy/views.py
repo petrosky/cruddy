@@ -1,6 +1,3 @@
-from django.shortcuts import render
-
-# Create your views here.
 from django.http import HttpResponse
 from .models import Users, Task, TaskList
 from django.template import loader
@@ -26,3 +23,11 @@ def task_detail(request, task_id):
 def add_task(request):
 
     return render(request, 'cruddy/add_task.html')
+
+def tasks_by_user(request):
+    users = Users.objects.all()
+
+
+    return render(request, 'cruddy/tasks_by_user.html', {'users': users})
+
+
