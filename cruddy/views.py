@@ -1,7 +1,9 @@
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from .models import Users, Task, TaskList
 from django.template import loader
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.shortcuts import get_object_or_404, render
+from .forms import TaskForm
 
 
 def index(request):
@@ -21,8 +23,21 @@ def task_detail(request, task_id):
 
 
 def add_task(request):
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = TaskForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            return HttpResponseRedirect('/thanks/')
 
-    return render(request, 'cruddy/add_task.html')
+        # if a GET (or any other method) we'll create a blank form
+    else:
+        form = TaskForm()
+
+    return render(request, 'cruddy/add_task.html', {'form': form})
 
 def tasks_by_user(request):
     users = Users.objects.all()
