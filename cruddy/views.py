@@ -1,9 +1,11 @@
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse
 from .models import Users, Task, TaskList
 from django.template import loader
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, HttpResponseRedirect
+
 from .forms import TaskForm
+from django import forms
+
 
 
 def index(request):
@@ -33,11 +35,12 @@ def add_task(request):
             # redirect to a new URL:
             return HttpResponseRedirect('/thanks/')
 
-        # if a GET (or any other method) we'll create a blank form
+    # if a GET (or any other method) we'll create a blank form
     else:
         form = TaskForm()
 
-    return render(request, 'cruddy/add_task.html', {'form': form})
+    return render(request, 'add_task.html', {'form': form})
+
 
 def tasks_by_user(request):
     users = Users.objects.all()
