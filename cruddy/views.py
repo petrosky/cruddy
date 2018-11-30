@@ -33,18 +33,17 @@ def add_task(request):
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
-            return HttpResponseRedirect('/thanks/')
+            return render(request, 'cruddy/index.html', {})
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = TaskForm()
 
-    return render(request, 'add_task.html', {'form': form})
+    return render(request, 'cruddy/add_task.html', {'form': form})
 
 
 def tasks_by_user(request):
     users = Users.objects.all()
-
 
     return render(request, 'cruddy/tasks_by_user.html', {'users': users})
 

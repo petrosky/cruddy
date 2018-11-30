@@ -1,2 +1,21 @@
-<textarea onclick="this.focus();this.select()" style="width: 100%;"> {% filter force_escape %} {% debug %} {% endfilter %}</textarea>
-<h1>Tasks by User</h1>
+<body>
+<h1>Users</h1>
+{% if users %}
+<table>
+
+    {% for user in users %}
+    <tr>
+        <td>{{ user.first_name }}</td>
+        <td>{{ user.last_name }}</td>
+        <td><a href="/cruddy/{{ task.id }}">View Detail</a></td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% else %}
+    <p>No users are available.</p>
+{% endif %}
+
+<a href="/cruddy/">Home</a><a href="/cruddy/add_task">Add Task</a>
+
+</body>
