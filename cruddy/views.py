@@ -7,7 +7,6 @@ from .forms import TaskForm
 from django import forms
 
 
-
 def index(request):
     tasks = Task.objects.order_by('due_date')
     template = loader.get_template('cruddy/index.html')
@@ -30,10 +29,11 @@ def add_task(request):
         form = TaskForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
+            form.save()
+            #task_name = request.POST.get('task_name')
+            #due_date = request.POST.get('due_date')
             # redirect to a new URL:
-            return render(request, 'cruddy/index.html', {})
+            return render(request, 'cruddy/index.html', {'task_name': task_name, 'due_date': due_date})
 
     # if a GET (or any other method) we'll create a blank form
     else:

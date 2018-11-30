@@ -1,8 +1,9 @@
-from django import forms
+#from django import forms
+from django.forms import ModelForm
+from .models import Task, Users
 
-from .models import Task
 
-
-class TaskForm(forms.Form):
-    task_name = forms.CharField(label = 'Task Name', max_length= 100)
-    due_date = forms.DateField()
+class TaskForm(ModelForm):
+    class Meta:
+        model = Task
+        fields = ['task_name', 'due_date','user_id']
