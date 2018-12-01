@@ -1,7 +1,17 @@
+
+<textarea onclick="this.focus();this.select()" style="width: 100%;"> {% filter force_escape %} {% debug %} {% endfilter %}</textarea>
+
 <h1>Add Task</h1>
 <form action="/cruddy/add_task" method="post">
     {% csrf_token %}
-    {{ user_form }}
+
+    <select name="id_user_id">
+    {% for user in users %}
+
+            <option value="{{ user.id }}">{{ user.first_name }}</option>
+
+    {% endfor %}
+    </select>
     {{ form }}
     <input type="submit" value="Submit">
 </form>
