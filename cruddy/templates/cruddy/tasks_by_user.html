@@ -1,4 +1,4 @@
-<body>
+{% include "cruddy/header.html" %}
 <h1>Users</h1>
 {% if users %}
 <table>
@@ -16,6 +16,4 @@
     <p>No users are available.</p>
 {% endif %}
 
-<a href="/cruddy/">Home</a><a href="/cruddy/add_task">Add Task</a>
-
-</body>
+{% include "cruddy/footer.html" %}
