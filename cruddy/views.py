@@ -2,8 +2,8 @@ from django.http import HttpResponse
 from .models import Users, Task, TaskList
 from django.template import loader
 from django.shortcuts import get_object_or_404, render, HttpResponseRedirect
-
 from .forms import TaskForm
+from django.shortcuts import render_to_response
 
 
 def index(request):
@@ -33,18 +33,25 @@ def add_task(request):
             #task_name = request.POST.get('task_name')
             #due_date = request.POST.get('due_date')
             # redirect to a new URL:
-            return render(request, 'cruddy/index.html', {'task_name': task_name, 'due_date': due_date})
+            return render(request, 'cruddy/index.html')
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = TaskForm()
-    users = Users.objects.all()
-    return render(request, 'cruddy/add_task.html', {'form': form, 'users': users})
+    return render(request, 'cruddy/add_task.html', {'form': form})
 
 
 def tasks_by_user(request):
+
     users = Users.objects.all()
 
     return render(request, 'cruddy/tasks_by_user.html', {'users': users})
 
+
+def tasks(request, user_id):
+    #return HttpResponse('<h1>Page was found</h1>')
+    user = get_object_or_404(Users, pk=user_id)
+    task_list = Task.objects.filter(user_id=user_id)
+
+    return render(request, 'cruddy/tasks.html', {'user': user, 'task_list': task_list})
 
