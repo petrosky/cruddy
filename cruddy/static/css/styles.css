@@ -3,11 +3,21 @@ h1 {
 }
 
 .leftnav {
-    width: 200px;
+    width: 400px;
     color: #C25100;
 
 }
 
+ol {
+  list-style-type: none;
+  width: 75px;
+  margin: 5;
+  padding: 5;
+  color: #C25100;
+  }
+li{
+  float: left;
+}
 
 .footer {
     padding-top: 50px;

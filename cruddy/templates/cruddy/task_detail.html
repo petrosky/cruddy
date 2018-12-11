@@ -1,4 +1,4 @@
-<textarea onclick="this.focus();this.select()" style="width: 100%;"> {% filter force_escape %} {% debug %} {% endfilter %}</textarea>
+{% include "cruddy/header.html" %}
 <h1>{{ task.task_name }}</h1>
 {% if task_list %}
 <table>
@@ -14,4 +14,4 @@
     <p>No tasks are available.</p>
 {% endif %}
 
-<a href="/cruddy/">Home</a>&nbsp;<a href="/cruddy/add_task">Add Task</a>
+{% include "cruddy/footer.html" %}
