@@ -10,15 +10,12 @@ h1 {
 
 #left {
     width: 25%;
-    color: #C25100;
-    background-color: #000000;
 }
 
 #right {
     width: 75%;
     height: 80%;
     float: right;
-    background-color: #000000;
 }
 
 ol {
