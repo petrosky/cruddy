@@ -1,0 +1,13 @@
+h1 a, h2 a {
+    color: #C25100;
+}
+
+.leftnav {
+    width: 200px;
+    color: #C25100;
+
+    a {
+    color: %C25100;
+    font-size: 48;
+    }
+}

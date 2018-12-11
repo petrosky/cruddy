@@ -2,13 +2,6 @@
 <form action="/cruddy/add_task" method="post">
     {% csrf_token %}
 
-    <select name="id_user_id">
-    {% for user in users %}
-
-            <option value="{{ user.id }}">{{ user.first_name }}</option>
-
-    {% endfor %}
-    </select>
     {{ form }}
     <input type="submit" value="Submit">
 </form>

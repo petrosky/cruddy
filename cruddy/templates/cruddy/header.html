@@ -7,18 +7,19 @@
   <title>Create, Read, Edit, Delete</title>
   <meta name="description" content="It's a Cruddy app.">
   <meta name="author" content="Peter Wright">
-
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
+{% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
 </head>
 
 <body>
-<div class="leftnav">
-
-
-
-
-
-</div>
 
 <h1>This app is for tasks.</h1>
+
+<div class="leftnav">
+   <ol>
+        <li><a href="/cruddy/">Home</a></li>
+        <li><a href="/cruddy/add_task">Add Task</a></li>
+        <li><a href="/cruddy/tasks_by_user">View tasks by User</a></li>
+    </ol>
+</div>
