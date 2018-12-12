@@ -30,8 +30,6 @@ def add_task(request):
         # check whether it's valid:
         if form.is_valid():
             form.save()
-            #task_name = request.POST.get('task_name')
-            #due_date = request.POST.get('due_date')
             # redirect to a new URL:
             return render(request, 'cruddy/index.html')
 
@@ -39,6 +37,11 @@ def add_task(request):
     else:
         form = TaskForm()
     return render(request, 'cruddy/add_task.html', {'form': form})
+
+
+def users(request):
+    users = Users.objects.all()
+    return render(request, 'cruddy/users.html', {'users': users})
 
 
 def tasks_by_user(request):
