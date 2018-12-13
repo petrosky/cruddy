@@ -52,7 +52,7 @@ def add_user(request):
         if form.is_valid():
             form.save()
             # redirect to a new URL:
-            return render(request, 'cruddy/index.html')
+            return render(request, 'users/add_user')
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -68,7 +68,7 @@ def tasks_by_user(request):
 
 
 def tasks(request, user_id):
-    #return HttpResponse('<h1>Page was found</h1>')
+
     user = get_object_or_404(Users, pk=user_id)
     task_list = Task.objects.filter(user_id=user_id)
 
