@@ -1,7 +1,7 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Users, Task, TaskList
 from django.template import loader
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, reverse
 from .forms import TaskForm, UserForm
 
 
@@ -46,18 +46,18 @@ def users(request):
 def add_user(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        form = UserForm(request.POST)
+        user_form = UserForm(request.POST)
 
         # check whether it's valid:
-        if form.is_valid():
-            form.save()
-            # redirect to a new URL:
-            return render(request, 'users/add_user')
+        #if user_form.is_valid():
+        user_form.save()
+        # redirect to a new URL:
+        return HttpResponseRedirect(reverse('add_user'))
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        form = UserForm()
-    return render(request, 'cruddy/add_user.html', {'form': form})
+        user_form = UserForm()
+    return render(request, 'cruddy/add_user.html', {'form': user_form})
 
 
 def tasks_by_user(request):
