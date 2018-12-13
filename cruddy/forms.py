@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Task, TaskList
+from .models import Task, TaskList, Users
 
 
 class TaskForm(ModelForm):
@@ -16,4 +16,9 @@ class TaskDetailForm(ModelForm):
         exclude = ()
 
 
+class UserForm(ModelForm):
+
+    class Meta:
+        model = Users
+        exclude = ()
 

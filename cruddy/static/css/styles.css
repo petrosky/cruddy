@@ -1,25 +1,43 @@
 h1 {
-    color: #C25100;
+    color: #000099;
+}
+#header {
+    width: 100%;
+    height: 50px;
+    background-color: #000099;
+    color: #ffffff;
+    padding: 5px;
 }
 
-.leftnav {
-    width: 400px;
-    color: #C25100;
-
+#left {
+    width: 25%;
+    float: left;
+    min-height: 650px;
+}
+#right {
+    padding-top: 25px;
+    width: 75%;
+    float: right;
 }
 
 ol {
-  list-style-type: none;
-  width: 75px;
-  margin: 5;
-  padding: 5;
+  width: 150px;
   color: #C25100;
   }
 li{
-  float: left;
+
 }
 
-.footer {
-    padding-top: 50px;
-    color: #C25100;
+#footer {
+    position: relative;
+    left: 0;
+    bottom:0;
+    background-color:#000099;
+    width:100%;
+    bottom:0;
+    padding:5px 0;
+    color: #ffffff;
+}
+.clearfix {
+    clear:both;
 }
