@@ -61,7 +61,7 @@ def add_user(request):
     return render(request, 'cruddy/add_task.html', {'form': form})
 
 
-def tasks_by_user(self, request):
+def tasks_by_user(request):
 
     users = Users.objects.all()
 
