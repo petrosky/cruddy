@@ -1,8 +1,9 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, HttpResponse, HttpResponseRedirect, reverse
 from .models import Users, Task, TaskList
+from django.utils import timezone
 from django.template import loader
-from django.shortcuts import get_object_or_404, render, reverse
-from .forms import TaskForm, UserForm
+from django.shortcuts import get_object_or_404, render, redirect
+from .forms import TaskForm, AddUserForm
 
 
 def index(request):
@@ -30,7 +31,7 @@ def add_task(request):
         if form.is_valid():
             form.save()
             # redirect to a new URL:
-            return render(request, 'cruddy/index.html')
+            return HttpResponseRedirect(reverse('cruddy:index'))
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -46,21 +47,21 @@ def users(request):
 def add_user(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        user_form = UserForm(request.POST)
+        form = AddUserForm(request.POST)
 
         # check whether it's valid:
-        #if user_form.is_valid():
-        user_form.save()
-        # redirect to a new URL:
-        return HttpResponseRedirect(reverse('add_user'))
+        if form.is_valid():
+            form.save()
+            # redirect to a new URL:
+            return HttpResponseRedirect(reverse('cruddy:index'))
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        user_form = UserForm()
-    return render(request, 'cruddy/add_user.html', {'form': user_form})
+        form = TaskForm()
+    return render(request, 'cruddy/add_task.html', {'form': form})
 
 
-def tasks_by_user(request):
+def tasks_by_user(self, request):
 
     users = Users.objects.all()
 

@@ -1,22 +1,22 @@
-from django.forms import ModelForm
+from django import forms
 from .models import Task, TaskList, Users
 
 
-class TaskForm(ModelForm):
+class TaskForm(forms.ModelForm):
 
     class Meta:
         model = Task
         exclude = ()
 
 
-class TaskDetailForm(ModelForm):
+class TaskDetailForm(forms.ModelForm):
 
     class Meta:
         model = TaskList
         exclude = ()
 
 
-class UserForm(ModelForm):
+class AddUserForm(forms.ModelForm):
 
     class Meta:
         model = Users
