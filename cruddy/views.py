@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect, reverse
 from .models import Users, Task, TaskList
+from django.views.generic.edit import UpdateView
 from django.utils import timezone
 from django.template import loader
 from django.shortcuts import get_object_or_404, render, redirect
@@ -52,8 +53,9 @@ def edit_task(request, task_id):
 
     # if a GET (or any other method) we'll create a blank form
     else:
+        task = get_object_or_404(Task, pk=task_id)
         form = TaskForm()
-    return render(request, 'cruddy/add_task.html', {'form': form})
+    return render(request, 'cruddy/add_task.html', {'form': form, 'task': task})
 
 
 def users(request):
