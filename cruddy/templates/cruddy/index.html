@@ -1,12 +1,16 @@
 {% include "cruddy/header.html" %}
 {% if tasks %}
 <table>
-
+    <tr>
+        <td>Task</td>
+        <td>Due Date</td>
+    </tr>
     {% for task in tasks %}
     <tr>
         <td>{{ task.task_name }}</td>
         <td>{{ task.due_date }}</td>
         <td><a href="/cruddy/{{ task.id }}">View Detail</a></td>
+        <td><a href="/cruddy/edit/{{ task.id }}">Edit</a></td>
     </tr>
     {% endfor %}
 

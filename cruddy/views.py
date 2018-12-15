@@ -39,6 +39,23 @@ def add_task(request):
     return render(request, 'cruddy/add_task.html', {'form': form})
 
 
+def edit_task(request, task_id):
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = TaskForm(request.POST)
+
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            # redirect to a new URL:
+            return HttpResponseRedirect(reverse('cruddy:index'))
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = TaskForm()
+    return render(request, 'cruddy/add_task.html', {'form': form})
+
+
 def users(request):
     users = Users.objects.all()
     return render(request, 'cruddy/users.html', {'users': users})
