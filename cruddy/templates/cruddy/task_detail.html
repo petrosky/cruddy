@@ -1,11 +1,13 @@
 {% include "cruddy/header.html" %}
 <h1>{{ task.task_name }}</h1>
+<h3>{{ task.due_date }}</h3>
 {% if task_list %}
 <table>
 
     {% for t in task_list %}
     <tr>
         <td>{{ t.task_list }}</td>
+
     </tr>
     {% endfor %}
 

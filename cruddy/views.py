@@ -53,12 +53,12 @@ def add_user(request):
         if form.is_valid():
             form.save()
             # redirect to a new URL:
-            return HttpResponseRedirect(reverse('cruddy:index'))
+            return HttpResponseRedirect(reverse('cruddy:users'))
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        form = TaskForm()
-    return render(request, 'cruddy/add_task.html', {'form': form})
+        form = AddUserForm()
+    return render(request, 'cruddy/add_user.html', {'form': form})
 
 
 def tasks_by_user(request):

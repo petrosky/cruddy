@@ -1,9 +1,9 @@
 {% include "cruddy/header.html" %}
 <form action="/cruddy/add_user" method="post">
     {% csrf_token %}
-
+<table>
     {{ form }}
-
+</table>
     <input type="submit" value="Submit">
 </form>
 {% include "cruddy/footer.html" %}
