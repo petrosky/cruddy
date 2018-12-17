@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Task, TaskList
+from .models import Users, Task, TaskList
 
 
 class TaskInline(admin.TabularInline):
@@ -8,5 +8,6 @@ class TaskInline(admin.TabularInline):
     extra = 3
 
 
+admin.site.register(Users)
 admin.site.register(Task)
 admin.site.register(TaskList)
