@@ -1,8 +1,8 @@
 {% include "cruddy/header.html" %}
-<form action="/cruddy/edit_task" method="post">
-    {% csrf_token %}
+<form action="/cruddy/edit_task/" method="post">{% csrf_token %}
     <table>
-{{ form }}
+
+    {{ form }}
     </table>
     <input type="submit" value="Submit">
 

@@ -7,6 +7,7 @@ from .forms import TaskForm, AddUserForm, TaskDetailForm
 from django.forms import formset_factory
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+from django.views.decorators.csrf import csrf_exempt
 
 def index(request):
     tasks = Task.objects.order_by('due_date')
@@ -41,7 +42,7 @@ def add_task(request):
 
     return render(request, 'cruddy/add_task.html', {'form': form})
 
-
+@csrf_exempt
 def edit_task(request, task_id):
 
     context_instance = RequestContext(request)
@@ -52,7 +53,7 @@ def edit_task(request, task_id):
         form = TaskForm(request.POST, instance=e)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/edit_task/')
+            return render('/' )
     else:
         e = Task.objects.get(pk=int(task_id))
         form = TaskForm(instance=e)
