@@ -1,11 +1,16 @@
 {% include "cruddy/header.html" %}
 <h2>User List</h2>
 {% if users %}
-    <ul>
+    <table>
     {% for user in users %}
-        <li><a href="/cruddy/{{ user.id }}/">{{ user.first_name }}</a></li>
+        <tr>
+            <td><a href="/cruddy/{{ user.id }}/">{{ user.id }}</a></td>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.email }}</td>
+         </tr>
     {% endfor %}
-    </ul>
+    </table>
 {% else %}
     <p>No users are available.</p>
 {% endif %}
